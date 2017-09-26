@@ -1,5 +1,5 @@
 import { IonicModule } from 'ionic-angular';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { LoginFormComponent } from './login-form/login-form';
 import { RegisterFormComponent } from './register-form/register-form';
 @NgModule({
@@ -15,4 +15,6 @@ import { RegisterFormComponent } from './register-form/register-form';
 		RegisterFormComponent
 ]
 })
+
+@Injectable()
 export class ComponentsModule {}

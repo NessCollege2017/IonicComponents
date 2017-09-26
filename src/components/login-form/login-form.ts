@@ -1,6 +1,9 @@
+import { AngularFireAuth } from 'angularfire2/auth';
+import {AngularFireDatabase} from 'angularfire2/database';
 import { NavController } from 'ionic-angular';
 import { Credentials } from './../../app/credentials.model';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   // The tag name
@@ -11,8 +14,11 @@ export class LoginFormComponent {
 
   credentials:Credentials = {email:"", password:""}
 
-  constructor(private navController: NavController) {
+  items: Observable<any>
+  constructor(private navController: NavController,private db: AngularFireDatabase,  private auth: AngularFireAuth) {
+   this.items =  this.db.list('items')
 
+    
   }
 
 
@@ -21,6 +27,12 @@ export class LoginFormComponent {
   }
 
   login(){
-    console.log('Login')
+    this.auth.auth.signInWithEmailAndPassword(this.credentials.email, this.credentials.password)
+    .then(r=>{console.log(r)
+    alert(r)
+    })
+    .catch(e=> {console.log(e)
+      alert(e.message)
+    })
   }
 }

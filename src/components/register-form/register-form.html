@@ -1,4 +1,18 @@
-<!-- Generated template for the RegisterFormComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-card>
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input [(ngModel)]="credentials.email" type="email"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input  [(ngModel)]="credentials.password" type="password"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <button ion-button block (click)="register()" color="primary">Register</button>
+        </ion-item>
+        
+      </ion-list>
+    </ion-card>
